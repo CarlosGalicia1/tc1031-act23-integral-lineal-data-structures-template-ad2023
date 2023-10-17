@@ -20,7 +20,7 @@ void encontrarPersona(int *ptr_i, std::list<int>::iterator &persona, list<int> &
     }
 }
 
-int main(){
+int main(){ // @Complexity	O(n^2)
     int n; // numero de persona
     int k; // numero de saltos
     int i = 1; // posicion de inicio
