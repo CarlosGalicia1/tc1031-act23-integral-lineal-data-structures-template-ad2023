@@ -106,7 +106,7 @@ int main(){ // @Complexity	O(n^2)
         auto iteradorElemento = std::find(copia.begin(), copia.end(), *lista.begin());
         //calcular distancia entre el inicio y el iterador
         ptrdiff_t distancia_derecha = distance(copia.begin(), --iteradorElemento); // @Complexity	O(n)
-        cout << (*copia.end())- distancia_derecha << endl
+        cout << (*copia.end())- distancia_derecha << endl;
     }
     else cout << *lista.begin() << endl; 
     
