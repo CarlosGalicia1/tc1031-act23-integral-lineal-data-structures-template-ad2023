@@ -20,7 +20,7 @@ void encontrarPersona(int *ptr_i, std::list<int>::iterator &persona, list<int> &
     }
 }
 
-int main(){ // @Complexity	O(n^2)
+int main(){
     int n; // numero de persona
     int k; // numero de saltos
     int i = 1; // posicion de inicio
@@ -47,17 +47,18 @@ int main(){ // @Complexity	O(n^2)
         if(persona == --lista.end()) ultimo = 1; // si el muerto esta en la ultima posicion..
         else ultimo = 0;
 
-        lista.erase(persona); // eliminar persona
+        persona = lista.erase(persona); // eliminar persona
 
         if(lista.size() == 1) break; //si la lista solo tiene un elemento termina el loop
 
         if(ultimo) persona = lista.begin(); // empezar en el siguiente elemento
-        else (persona)++;
+        //else (persona)++;
 
         if((*ptr_i) > lista.size()) (*ptr_i) = 1;
         valor_siguiente = *persona;
 
         encontrarPersona(ptr_i, persona, lista, k); // encontrar persona sustituta
+
 
         int valor_sustituto = *persona; // guardar valor de persona sustituta
 
@@ -65,7 +66,6 @@ int main(){ // @Complexity	O(n^2)
         //encontrar la posicion de valor del elemento a mover
         list<int>::iterator it = find(lista.begin(), lista.end(), *persona); // @Complexity	O(n)
         if(ultimo){
-            int elementToMove = *it;  // Guardar el valor del elemento
             lista.erase(it);  // Eliminar el elemento de su posición original
             it = find(lista.begin(), lista.end(), valor_siguiente);  // Encontrar la nueva posición O(n)
             lista.push_back(valor_sustituto);
@@ -80,7 +80,7 @@ int main(){ // @Complexity	O(n^2)
                 }
             }
         }
-        
+
         persona = lista.begin(); // reinicio de iterador
         persona = find(lista.begin(), lista.end(), valor_sustituto); // recolocación del iterador
 
@@ -101,7 +101,7 @@ int main(){ // @Complexity	O(n^2)
         if(persona == --lista.end()) persona = lista.begin();
         else persona++;
     }
-    
+
     if(*lista.begin() != 1){
         auto iteradorElemento = std::find(copia.begin(), copia.end(), *lista.begin());
         //calcular distancia entre el inicio y el iterador
@@ -109,6 +109,6 @@ int main(){ // @Complexity	O(n^2)
         cout << (*copia.end())- distancia_derecha << endl;
     }
     else cout << *lista.begin() << endl; 
-    
+
     return 0;
 }
